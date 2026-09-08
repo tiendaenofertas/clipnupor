@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Clipnuvex — Design tokens (README → CSS custom properties)
+   ========================================================================== */
+
+:root {
+	/* Colores base */
+	--cnx-bg: #0a0910;
+	--cnx-bg-mid: #0f0d18;
+	--cnx-surface: #15131e;
+	--cnx-surface-2: #161b2c;
+	--cnx-translucent: rgba(30, 41, 59, .5);
+	--cnx-translucent-strong: rgba(30, 41, 59, .6);
+
+	/* Acento (overridable desde el panel vía inline) */
+	--cnx-accent: #7C5CFF;
+	--cnx-accent-dark: #5B3CE0;
+	--cnx-accent-deep: #3F2AA8;
+	--cnx-accent-light: #B9A8FF;
+	--cnx-accent-light-2: #cbbcff;
+	--cnx-accent-grad: linear-gradient(135deg, #7C5CFF, #5B3CE0);
+
+	/* Texto */
+	--cnx-text: #f1f3f8;
+	--cnx-text-2: #aab2c6;
+	--cnx-text-3: #8a93a8;
+	--cnx-text-3b: #7c869e;
+	--cnx-text-4: #5d6680;
+	--cnx-text-5: #4b5468;
+
+	/* Bordes */
+	--cnx-border: rgba(255, 255, 255, .07);
+	--cnx-border-2: rgba(255, 255, 255, .1);
+	--cnx-border-3: rgba(255, 255, 255, .12);
+	--cnx-border-strong: rgba(255, 255, 255, .16);
+
+	/* Etiquetas de anuncio */
+	--cnx-preroll-color: #fbbf24;
+	--cnx-ad-size-bg: rgba(124, 92, 255, .92);
+
+	/* Gradientes globales */
+	--cnx-body-grad: linear-gradient(180deg, #0a0910 0%, #0f0d18 50%, #0a0910 100%);
+	/* ---- Tokens derivables (v1.5.0). Sus defaults son los literales históricos
+	   EXACTOS que sustituyen en el CSS; inc/colors.php los recalcula solo cuando
+	   el color base correspondiente se personaliza en el panel. Todo token nuevo
+	   debe replicarse en el :root de critical.css. ---- */
+	--cnx-accent-rgb: 124, 92, 255;
+	--cnx-on-accent: #fff;
+	--cnx-hero-grad: linear-gradient(120deg, #1a1438, #2a1d6e 58%, #3f2aa8);
+	--cnx-fg-rgb: 255, 255, 255;
+	--cnx-slate-rgb: 30, 41, 59;
+	--cnx-header-bg: rgba(10, 14, 26, .66);
+	--cnx-header-bg-scrolled: rgba(8, 10, 18, .96);
+	--cnx-bottomnav-bg: rgba(12, 14, 24, .93);
+	--cnx-footer-bg: rgba(13, 12, 22, .6);
+	--cnx-controls-bg: rgba(12, 16, 28, .9);
+	--cnx-badge-bg: rgba(10, 14, 26, .9);
+	--cnx-drawer-grad: linear-gradient(135deg, #161b2c, #0f0d18);
+	--cnx-search-bg: rgba(20, 22, 38, .92);
+	--cnx-search-panel-bg: rgba(16, 18, 32, .98);
+	--cnx-tabs-grad: linear-gradient(135deg, rgba(30, 41, 59, .9), rgba(15, 20, 34, .95));
+	--cnx-seo-bg: rgba(20, 24, 36, .45);
+	--cnx-heading: #fff;
+	--cnx-text-strong: #fff;
+	--cnx-text-soft: #cfd6e6;
+	--cnx-text-muted: #9aa3b8;
+	/* Tarjetas por fila en móvil (<520px), ambas orientaciones (panel → Estilos). */
+	--cnx-cols-mobile: 2;
+
+	/* Tipografía */
+	--cnx-font-display: 'Clash Display', system-ui, -apple-system, sans-serif;
+	--cnx-font-body: 'Satoshi', system-ui, -apple-system, sans-serif;
+
+	/* Radios */
+	--cnx-radius-card: 15px;
+	--cnx-radius-panel: 18px;
+	--cnx-radius-panel-lg: 22px;
+	--cnx-radius-btn: 12px;
+	--cnx-radius-input: 14px;
+	--cnx-radius-pill: 999px;
+
+	/* Sombras */
+	--cnx-shadow-card: 0 8px 22px rgba(0, 0, 0, .45), 0 0 0 1px rgba(255, 255, 255, .06);
+	--cnx-shadow-card-hover: 0 26px 50px rgba(0, 0, 0, .6), 0 0 0 2px var(--cnx-accent), 0 0 44px rgba(124, 92, 255, .32);
+	--cnx-shadow-accent: 0 6px 18px rgba(124, 92, 255, .4);
+	--cnx-shadow-panel: 0 10px 34px rgba(0, 0, 0, .45);
+
+	/* Layout */
+	--cnx-container: 1600px;
+	--cnx-pad-x: clamp(16px, 4vw, 40px);
+	--cnx-gap: clamp(14px, 1.6vw, 22px);
+	--cnx-header-h: 66px;
+
+	/* Z-index */
+	--cnx-z-header: 1000;
+	--cnx-z-search: 1200;
+	--cnx-z-drawer: 2000;
+	--cnx-z-bottomnav: 950;
+	--cnx-z-skip: 3000;
+}

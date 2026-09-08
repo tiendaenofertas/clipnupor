@@ -1,0 +1,212 @@
+/* ==========================================================================
+   Clipnuvex — Estilos por vista
+   ========================================================================== */
+
+/* ---------- Main genérico ---------- */
+.cnx-view {
+	max-width: var(--cnx-container);
+	margin: 0 auto;
+	padding: clamp(18px, 3vw, 30px) var(--cnx-pad-x) 70px;
+}
+
+/* ---------- Home ---------- */
+.cnx-home__chips { display: flex; align-items: center; gap: 12px; }
+.cnx-home__chips .cnx-chips { flex: 1; min-width: 0; }
+.cnx-home__viewall { flex: none; font: 700 13px var(--cnx-font-body); color: var(--cnx-accent); white-space: nowrap; cursor: pointer; display: inline-flex; align-items: center; min-height: 36px; padding: 4px 6px; }
+.cnx-home__section { margin-top: 22px; }
+.cnx-home__mobile-ad { margin-top: 18px; display: flex; justify-content: center; }
+
+/* ---------- Categorías (todas) ---------- */
+.cnx-cats {
+	max-width: var(--cnx-container);
+	margin: 0 auto;
+	padding: clamp(24px, 4vw, 48px) var(--cnx-pad-x) 70px;
+}
+.cnx-cats__head { text-align: center; margin-bottom: clamp(28px, 4vw, 44px); }
+.cnx-cats__head h1 { margin: 0; font: 700 clamp(28px, 4vw, 46px)/1.05 var(--cnx-font-display); letter-spacing: -.02em; color: var(--cnx-heading); text-wrap: balance; }
+.cnx-cats__head p { margin: 12px auto 0; max-width: 620px; font: 500 15px/1.6 var(--cnx-font-body); color: var(--cnx-text-2); }
+.cnx-cats__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(clamp(260px, 40vw, 360px), 1fr)); gap: clamp(16px, 2vw, 26px); }
+.cnx-catcard {
+	position: relative; display: block;
+	height: 260px; border-radius: 20px; overflow: hidden;
+	background: var(--cnx-surface);
+	box-shadow: 0 10px 26px rgba(0, 0, 0, .4);
+	transition: filter .25s ease;
+}
+.cnx-catcard:hover { filter: brightness(1.1); }
+.cnx-catcard__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .9; }
+.cnx-catcard__shade { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(8, 11, 20, .25), rgba(8, 11, 20, .55) 55%, rgba(8, 11, 20, .92)); }
+.cnx-catcard__body { position: absolute; left: 24px; bottom: 24px; right: 24px; }
+.cnx-catcard__icon {
+	width: 56px; height: 56px; border-radius: 15px;
+	background: var(--cnx-accent-grad);
+	display: flex; align-items: center; justify-content: center;
+	box-shadow: 0 8px 22px rgba(var(--cnx-accent-rgb), .45);
+	margin-bottom: 16px; color: var(--cnx-on-accent);
+}
+.cnx-catcard__name { font: 700 24px var(--cnx-font-display); color: #fff; letter-spacing: -.01em; }
+.cnx-catcard__count { margin-top: 6px; display: flex; align-items: center; gap: 7px; font: 600 13px var(--cnx-font-body); color: var(--cnx-text-2); }
+
+/* ---------- Archivo de taxonomía ---------- */
+.cnx-hero {
+	position: relative; overflow: hidden;
+	border-bottom: 1px solid var(--cnx-border);
+}
+.cnx-hero__inner { position: relative; max-width: var(--cnx-container); margin: 0 auto; padding: clamp(30px, 5vw, 56px) var(--cnx-pad-x); }
+.cnx-hero__shade { position: absolute; inset: 0; background: linear-gradient(120deg, rgba(10, 14, 26, .78), rgba(10, 14, 26, .92)); }
+.cnx-hero__badge {
+	display: inline-flex; align-items: center; gap: 7px;
+	padding: 8px 15px; background: var(--cnx-accent-grad);
+	border-radius: 999px; font: 800 12px var(--cnx-font-body);
+	text-transform: uppercase; letter-spacing: .05em; color: var(--cnx-on-accent);
+	box-shadow: var(--cnx-shadow-accent);
+}
+.cnx-hero__title { margin: 16px 0 0; font: 700 clamp(28px, 4.4vw, 50px)/1.04 var(--cnx-font-display); letter-spacing: -.02em; color: #fff; text-wrap: balance; }
+.cnx-hero__desc { margin: 14px 0 0; max-width: 740px; font: 500 15px/1.65 var(--cnx-font-body); color: var(--cnx-text-2); }
+
+/* Hero compacto en móvil: el visitante entró a ver vídeos — el cartel no debe
+   comerse el primer pantallazo. El padding del hero de búsqueda no cambia (su
+   regla .cnx-hero--search .cnx-hero__inner es más específica y ya es compacta).
+   Réplica en critical.css (above-the-fold, anti-CLS). */
+@media (max-width: 600px) {
+	.cnx-hero__inner { padding: 20px var(--cnx-pad-x) 22px; }
+	.cnx-hero__title { font-size: 23px; }
+	.cnx-hero__desc { margin-top: 10px; font-size: 13.5px; line-height: 1.55; }
+}
+
+/* Hero de búsqueda */
+.cnx-hero--search { background: var(--cnx-hero-grad); }
+.cnx-hero--search .cnx-hero__inner { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; padding: clamp(26px, 4vw, 46px) var(--cnx-pad-x); }
+.cnx-hero__glow { position: absolute; inset: 0; background: radial-gradient(120% 150% at 100% 0%, rgba(var(--cnx-accent-rgb), .28), transparent 55%); }
+.cnx-hero__icon { position: relative; flex: none; width: 56px; height: 56px; border-radius: 16px; background: rgba(255, 255, 255, .13); border: 1px solid rgba(255, 255, 255, .24); display: flex; align-items: center; justify-content: center; color: #fff; }
+.cnx-hero__eyebrow { font: 800 11px var(--cnx-font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--cnx-accent-light-2); }
+.cnx-hero__count { margin: 8px 0 0; font: 600 13.5px var(--cnx-font-body); color: #cfd6e6; }
+
+/* Controles sticky de orden + filtros */
+.cnx-controls {
+	position: sticky; top: var(--cnx-header-h); z-index: 100;
+	background: var(--cnx-controls-bg);
+	backdrop-filter: blur(12px);
+	border-bottom: 1px solid var(--cnx-border);
+}
+.cnx-controls__row { max-width: var(--cnx-container); margin: 0 auto; padding: 14px var(--cnx-pad-x); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.cnx-controls__chips { max-width: var(--cnx-container); margin: 0 auto; padding: 0 var(--cnx-pad-x) 14px; display: flex; gap: 8px; overflow-x: auto; }
+
+/* Caja de contador de resultados */
+.cnx-results-count {
+	font: 600 14px var(--cnx-font-body);
+	color: var(--cnx-text-2);
+	padding: 9px 14px;
+	background: rgba(var(--cnx-slate-rgb), .35);
+	border-left: 3px solid var(--cnx-accent);
+	border-radius: 8px;
+}
+.cnx-results-count strong { color: var(--cnx-accent); font-weight: 900; }
+.cnx-results-row { margin-bottom: 22px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+/* Bloque SEO al pie de categoría */
+.cnx-seo-block {
+	margin-top: 54px;
+	background: var(--cnx-seo-bg);
+	border: 1px solid var(--cnx-border);
+	border-radius: 20px;
+	padding: clamp(24px, 4vw, 40px);
+}
+.cnx-seo-block h2 { margin: 0 0 14px; font: 700 clamp(20px, 2.4vw, 26px) var(--cnx-font-display); color: var(--cnx-heading); }
+.cnx-seo-block p { margin: 0 0 14px; font: 400 15px/1.8 var(--cnx-font-body); color: var(--cnx-text-2); }
+.cnx-seo-block ul { margin: 0; padding-left: 20px; color: var(--cnx-text-2); font: 400 14.5px/1.9 var(--cnx-font-body); }
+.cnx-seo-block strong { color: var(--cnx-heading); }
+
+/* Sin resultados */
+.cnx-noresults { text-align: center; padding: 80px 20px; color: var(--cnx-text-3b); }
+.cnx-noresults__title { font: 700 20px var(--cnx-font-display); color: var(--cnx-text-3); }
+.cnx-noresults__sub { margin-top: 8px; font: 500 14px var(--cnx-font-body); }
+
+/* ---------- Single video ---------- */
+.cnx-single {
+	max-width: var(--cnx-container); margin: 0 auto;
+	padding: 22px var(--cnx-pad-x) 70px;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: clamp(20px, 2.4vw, 32px);
+	align-items: start;
+}
+@media (min-width: 1024px) {
+	.cnx-single { grid-template-columns: minmax(0, 1fr) 320px; }
+}
+.cnx-single__related { margin-top: 30px; }
+.cnx-single__mobile-ad { margin-bottom: 18px; display: flex; justify-content: center; }
+
+/* Ocultar sidebar en móvil */
+@media (max-width: 1023px) { .cnx-aside { display: none; } }
+
+/* Utilidades de visibilidad por breakpoint */
+.cnx-only-mobile { display: none; }
+/* Variante que además centra su contenido cuando se muestra en móvil. Evita
+   tener que poner display:flex inline (que anularía el ocultado en desktop). */
+.cnx-only-mobile-flex { display: none; }
+@media (max-width: 899px) {
+	.cnx-only-mobile { display: block; }
+	.cnx-only-mobile-flex { display: flex; justify-content: center; }
+	.cnx-only-desktop { display: none; }
+}
+
+/* ---------- Página / entrada genérica (page.php, single.php) ----------
+   Maqueta de lectura para páginas normales (legales, contacto…) y entradas.
+   Solo tokens (ver CLAUDE.md); la parte above-the-fold se replica en critical.css. */
+.cnx-page { max-width: 820px; margin: 0 auto; padding: clamp(22px, 3vw, 36px) var(--cnx-pad-x) 70px; }
+.cnx-page__title { margin: 0 0 18px; font: 700 clamp(26px, 3.6vw, 40px)/1.15 var(--cnx-font-display); color: var(--cnx-heading); letter-spacing: -.01em; }
+.cnx-page__meta { margin: -8px 0 22px; font: 500 13px var(--cnx-font-body); color: var(--cnx-text-3); }
+.cnx-page__figure { margin: 0 0 24px; border-radius: var(--cnx-radius-panel); overflow: hidden; }
+.cnx-page__img { display: block; width: 100%; height: auto; }
+.cnx-prose { font: 400 16px/1.8 var(--cnx-font-body); color: var(--cnx-text-2); overflow-wrap: anywhere; }
+.cnx-prose > :first-child { margin-top: 0; }
+.cnx-prose p, .cnx-prose ul, .cnx-prose ol { margin: 0 0 18px; }
+.cnx-prose ul, .cnx-prose ol { padding-left: 22px; }
+.cnx-prose li { margin: 0 0 8px; }
+.cnx-prose h2, .cnx-prose h3, .cnx-prose h4 { margin: 32px 0 12px; font-family: var(--cnx-font-display); font-weight: 700; color: var(--cnx-heading); line-height: 1.25; }
+.cnx-prose h2 { font-size: clamp(20px, 2.4vw, 26px); }
+.cnx-prose h3 { font-size: clamp(17px, 2vw, 20px); }
+.cnx-prose h4 { font-size: 16px; }
+.cnx-prose strong { color: var(--cnx-heading); }
+.cnx-prose a { color: var(--cnx-accent-light); text-decoration: underline; text-underline-offset: 3px; }
+.cnx-prose a:hover { color: var(--cnx-accent-light-2); }
+.cnx-prose blockquote { margin: 0 0 18px; padding: 12px 18px; border-left: 3px solid var(--cnx-accent); background: var(--cnx-surface); border-radius: 0 var(--cnx-radius-btn) var(--cnx-radius-btn) 0; }
+.cnx-prose img { max-width: 100%; height: auto; border-radius: var(--cnx-radius-btn); }
+.cnx-prose hr { border: 0; border-top: 1px solid var(--cnx-border); margin: 28px 0; }
+.cnx-prose table { width: 100%; border-collapse: collapse; margin: 0 0 18px; font-size: 15px; }
+.cnx-prose th, .cnx-prose td { padding: 10px 12px; border-bottom: 1px solid var(--cnx-border); text-align: left; }
+.cnx-prose th { color: var(--cnx-heading); }
+.cnx-prose code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .92em; background: var(--cnx-surface); padding: 2px 6px; border-radius: 6px; }
+.cnx-prose pre { overflow-x: auto; background: var(--cnx-surface); padding: 14px 16px; border-radius: var(--cnx-radius-btn); border: 1px solid var(--cnx-border); }
+.cnx-prose pre code { background: none; padding: 0; }
+.cnx-page__pages { margin-top: 20px; font: 600 14px var(--cnx-font-body); color: var(--cnx-text-2); }
+
+/* ---------- Comentarios (comments.php: páginas, entradas y vídeos migrados) ---------- */
+.cnx-comments { margin-top: 36px; padding-top: 26px; border-top: 1px solid var(--cnx-border); }
+.cnx-comments__title, .cnx-comments .comment-reply-title { margin: 0 0 18px; font: 700 clamp(18px, 2.2vw, 22px) var(--cnx-font-display); color: var(--cnx-heading); }
+.cnx-comments__list, .cnx-comments__list ol.children { list-style: none; margin: 0; padding: 0; }
+.cnx-comments__list ol.children { margin-left: clamp(16px, 4vw, 40px); }
+.cnx-comments__list .comment-body { position: relative; padding: 14px 16px 14px 60px; margin: 0 0 12px; background: var(--cnx-surface); border: 1px solid var(--cnx-border); border-radius: var(--cnx-radius-panel); font: 400 15px/1.7 var(--cnx-font-body); color: var(--cnx-text-2); }
+.cnx-comments__list .avatar { position: absolute; left: 12px; top: 14px; width: 36px; height: 36px; border-radius: 50%; }
+.cnx-comments__list .comment-author .fn { font: 700 14px var(--cnx-font-body); color: var(--cnx-heading); font-style: normal; }
+.cnx-comments__list .comment-author .says { display: none; }
+.cnx-comments__list .comment-metadata { font: 500 12px var(--cnx-font-body); color: var(--cnx-text-3); margin-bottom: 6px; }
+.cnx-comments__list .comment-metadata a { color: inherit; text-decoration: none; }
+.cnx-comments__list .comment-content p { margin: 0 0 8px; }
+.cnx-comments__list .comment-content a { color: var(--cnx-accent-light); }
+.cnx-comments__list .reply a, .cnx-comments .comment-edit-link { font: 700 12px var(--cnx-font-body); color: var(--cnx-accent-light); text-decoration: none; }
+.cnx-comments__list .bypostauthor > .comment-body { border-color: rgba(var(--cnx-accent-rgb), .45); }
+.cnx-comments__closed { font: 500 14px var(--cnx-font-body); color: var(--cnx-text-3); }
+.cnx-comments .comment-navigation { display: flex; justify-content: space-between; margin: 8px 0 18px; font: 600 14px var(--cnx-font-body); }
+.cnx-comments .comment-navigation a { color: var(--cnx-accent-light); text-decoration: none; }
+.cnx-comments__form { margin-top: 8px; }
+.cnx-comments__form label { display: block; margin: 0 0 6px; font: 600 13px var(--cnx-font-body); color: var(--cnx-text-2); }
+.cnx-comments__form p { margin: 0 0 14px; }
+.cnx-comments__form .comment-notes, .cnx-comments__form .logged-in-as { font: 500 13px/1.6 var(--cnx-font-body); color: var(--cnx-text-3); }
+.cnx-comments__form .logged-in-as a, .cnx-comments__form .must-log-in a { color: var(--cnx-accent-light); }
+.cnx-comments__form textarea, .cnx-comments__form input[type="text"], .cnx-comments__form input[type="email"], .cnx-comments__form input[type="url"] { width: 100%; box-sizing: border-box; padding: 11px 14px; background: var(--cnx-surface); color: var(--cnx-text-strong); border: 1px solid var(--cnx-border-2); border-radius: var(--cnx-radius-input); font: 400 15px var(--cnx-font-body); }
+.cnx-comments__form textarea:focus, .cnx-comments__form input:focus { outline: none; border-color: var(--cnx-accent); box-shadow: 0 0 0 3px rgba(var(--cnx-accent-rgb), .18); }
+.cnx-comments__form .comment-form-cookies-consent label { display: inline; margin-left: 6px; font-weight: 500; }
+.cnx-comments__form .submit { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 22px; background: var(--cnx-accent-grad); color: var(--cnx-on-accent); border: 0; border-radius: var(--cnx-radius-btn); font: 700 14px var(--cnx-font-body); cursor: pointer; box-shadow: 0 6px 20px rgba(var(--cnx-accent-rgb), .45); }
+.cnx-comments__form .submit:hover { filter: brightness(1.08); }

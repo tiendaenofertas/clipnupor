@@ -1,0 +1,166 @@
+/* ==========================================================================
+   Clipnuvex — Panel de administración (ultra premium)
+   Todo scoped a .clipnuvex-admin para no interferir con wp-admin.
+   Se usa especificidad .wrap.clipnuvex-admin para ganar a estilos del core.
+   ========================================================================== */
+
+.clipnuvex-admin { max-width: 1200px; margin-right: 20px; }
+.clipnuvex-admin * { box-sizing: border-box; }
+
+/* ---------- Hero ---------- */
+.wrap.clipnuvex-admin .clipnuvex-admin__hero {
+	position: relative;
+	display: flex; align-items: center; justify-content: space-between; gap: 24px;
+	margin: 18px 0 22px;
+	padding: 26px 30px;
+	overflow: hidden;
+	background: linear-gradient(120deg, #1a1438 0%, #2a1d6e 58%, #3f2aa8 100%);
+	border-radius: 16px;
+	box-shadow: 0 14px 40px -12px rgba(63, 42, 168, .55);
+}
+.wrap.clipnuvex-admin .clipnuvex-admin__hero::after {
+	content: ""; position: absolute; inset: 0; pointer-events: none;
+	background: radial-gradient(120% 140% at 100% 0%, rgba(124, 92, 255, .45), transparent 55%);
+}
+.clipnuvex-admin__brand { position: relative; z-index: 1; display: flex; align-items: center; gap: 16px; }
+.clipnuvex-admin__logo {
+	width: 50px; height: 50px; border-radius: 13px; flex: none;
+	background: linear-gradient(135deg, #fff, #e7e0ff);
+	display: flex; align-items: center; justify-content: center;
+	box-shadow: 0 8px 22px -4px rgba(0, 0, 0, .5);
+}
+.clipnuvex-admin__logo-play {
+	width: 0; height: 0; margin-left: 3px;
+	border-top: 9px solid transparent; border-bottom: 9px solid transparent;
+	border-left: 14px solid #5B3CE0;
+}
+.wrap.clipnuvex-admin .clipnuvex-admin__hero h1 {
+	color: #fff; font-size: 27px; line-height: 1.1; margin: 0; padding: 0;
+	font-weight: 700; letter-spacing: -.01em; text-shadow: 0 2px 10px rgba(0, 0, 0, .25);
+}
+.wrap.clipnuvex-admin .clipnuvex-admin__hero h1 span { color: #cbbcff; }
+.wrap.clipnuvex-admin .clipnuvex-admin__hero p { color: #d7d2f0; margin: 5px 0 0; font-size: 13.5px; }
+.clipnuvex-admin__demo {
+	position: relative; z-index: 1; flex: none;
+	text-decoration: none; color: #fff; font-weight: 600; font-size: 13.5px;
+	padding: 11px 20px; border-radius: 999px;
+	background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .35);
+	backdrop-filter: blur(6px); transition: background .18s, transform .18s;
+}
+.clipnuvex-admin__demo:hover { background: rgba(255, 255, 255, .26); color: #fff; transform: translateY(-1px); }
+
+/* ---------- Layout: sidebar + panel ---------- */
+.clipnuvex-admin__layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 960px) { .clipnuvex-admin__layout { grid-template-columns: 1fr; } }
+
+/* ---------- Tabs (sidebar) ---------- */
+.clipnuvex-admin__tabs { display: flex; flex-direction: column; gap: 5px; position: sticky; top: 46px; }
+@media (max-width: 960px) {
+	.clipnuvex-admin__tabs { position: static; flex-direction: row; flex-wrap: wrap; }
+}
+.clipnuvex-admin__tab {
+	display: flex; align-items: center; gap: 11px;
+	padding: 12px 15px; border-radius: 11px;
+	text-decoration: none; color: #3c434a; font-weight: 600; font-size: 14px;
+	border: 1px solid transparent; background: transparent;
+	transition: background .15s, color .15s, border-color .15s;
+}
+.clipnuvex-admin__tab:hover { background: #fff; color: #1d2327; box-shadow: 0 1px 4px rgba(0, 0, 0, .05); }
+.clipnuvex-admin__tab.is-active {
+	background: #fff; color: #5B3CE0;
+	border-color: rgba(124, 92, 255, .45);
+	box-shadow: 0 4px 14px rgba(124, 92, 255, .18);
+}
+.clipnuvex-admin__tab .dashicons { color: #7C5CFF; font-size: 19px; width: 19px; height: 19px; }
+.clipnuvex-admin__tab.is-active .dashicons { color: #5B3CE0; }
+
+/* ---------- Panel ---------- */
+.clipnuvex-admin__panel {
+	background: #fff; border: 1px solid #e2e4e9; border-radius: 16px;
+	padding: 6px 30px 28px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, .04);
+}
+.wrap.clipnuvex-admin .clipnuvex-admin__panel-title {
+	display: flex; align-items: center; gap: 11px;
+	font-size: 19px; font-weight: 700; color: #1d2327;
+	padding: 20px 0 14px; margin: 0;
+	border-bottom: 1px solid #f0f0f1;
+}
+.clipnuvex-admin__panel-title .dashicons { color: #7C5CFF; font-size: 22px; width: 22px; height: 22px; }
+.wrap.clipnuvex-admin .clipnuvex-admin__group {
+	margin: 26px 0 2px; padding-top: 16px;
+	font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: #7C5CFF; font-weight: 700;
+	border-top: 1px solid #f0f0f1;
+}
+.clipnuvex-admin__panel .form-table { margin-top: 4px; }
+.clipnuvex-admin__panel .form-table th { width: 290px; font-weight: 600; color: #1d2327; padding: 18px 10px 18px 0; vertical-align: top; }
+.clipnuvex-admin__panel .form-table td { padding: 14px 10px; }
+.clipnuvex-admin__panel .description { color: #646970; font-size: 12.5px; margin-top: 6px; }
+
+/* Inputs con foco de acento */
+.clipnuvex-admin__panel input[type="text"],
+.clipnuvex-admin__panel input[type="url"],
+.clipnuvex-admin__panel input[type="number"],
+.clipnuvex-admin__panel select,
+.clipnuvex-admin__panel textarea { border-radius: 8px; }
+.clipnuvex-admin__panel input[type="text"]:focus,
+.clipnuvex-admin__panel input[type="url"]:focus,
+.clipnuvex-admin__panel input[type="number"]:focus,
+.clipnuvex-admin__panel select:focus,
+.clipnuvex-admin__panel textarea:focus {
+	border-color: #7C5CFF; box-shadow: 0 0 0 2px rgba(124, 92, 255, .25); outline: 2px solid transparent;
+}
+.clipnuvex-admin__panel input[type="text"],
+.clipnuvex-admin__panel input[type="url"] { min-width: 420px; max-width: 100%; }
+.clipnuvex-admin__panel textarea { width: 100%; max-width: 620px; }
+
+/* Submit */
+.clipnuvex-admin__submit { margin-top: 24px; padding-top: 18px; border-top: 1px solid #f0f0f1; }
+.wrap.clipnuvex-admin .button-primary {
+	background: #7C5CFF; border-color: #5B3CE0; color: #fff;
+	box-shadow: 0 6px 16px -4px rgba(124, 92, 255, .6);
+	border-radius: 9px; padding: 4px 20px; height: auto; min-height: 38px; font-weight: 600;
+}
+.wrap.clipnuvex-admin .button-primary:hover { background: #5B3CE0; border-color: #3F2AA8; }
+
+/* Media field */
+.clipnuvex-media .button { vertical-align: middle; }
+.clipnuvex-media-preview img { display: block; max-width: 180px; height: auto; margin-top: 10px; border-radius: 10px; border: 1px solid #e2e4e9; }
+
+/* Color picker alineado */
+.clipnuvex-admin__panel .wp-picker-container { vertical-align: middle; }
+
+/* ---------- Toggle switch ---------- */
+.clipnuvex-switch { position: relative; display: inline-block; width: 48px; height: 27px; vertical-align: middle; }
+.clipnuvex-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.clipnuvex-switch span {
+	position: absolute; inset: 0; cursor: pointer;
+	background: #c3c4c7; border-radius: 999px; transition: background .2s;
+}
+.clipnuvex-switch span::before {
+	content: ""; position: absolute; left: 3px; top: 3px;
+	width: 21px; height: 21px; background: #fff; border-radius: 50%;
+	transition: transform .2s; box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+}
+.clipnuvex-switch input:checked + span { background: linear-gradient(135deg, #7C5CFF, #5B3CE0); }
+.clipnuvex-switch input:checked + span::before { transform: translateX(21px); }
+.clipnuvex-switch input:focus-visible + span { outline: 2px solid #5B3CE0; outline-offset: 2px; }
+
+/* ---------- Migrar entradas a vídeos ---------- */
+.clipnuvex-migrate__card h2 { margin: 26px 0 10px; font-size: 16px; }
+.clipnuvex-migrate__grid { display: grid; grid-template-columns: repeat( auto-fit, minmax( 320px, 1fr ) ); gap: 18px; }
+.clipnuvex-migrate__grid fieldset { border: 1px solid #dcdcde; border-radius: 8px; padding: 12px 14px; background: #fff; }
+.clipnuvex-migrate__grid legend { font-weight: 600; padding: 0 6px; }
+.clipnuvex-migrate__grid label { display: block; margin: 6px 0; }
+.clipnuvex-migrate__grid select[multiple] { width: 100%; }
+.clipnuvex-migrate__map { display: flex !important; align-items: center; gap: 10px; }
+.clipnuvex-migrate__map span { min-width: 130px; }
+.clipnuvex-migrate__map input { flex: 1; }
+.clipnuvex-migrate__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+.clipnuvex-migrate__progress { margin-top: 18px; }
+.clipnuvex-migrate__bar { height: 12px; background: #e5e5e5; border-radius: 999px; overflow: hidden; }
+.clipnuvex-migrate__bar span { display: block; height: 100%; width: 0; background: #7c5cff; transition: width .3s; }
+.clipnuvex-migrate__tables h3 { margin: 22px 0 8px; }
+.clipnuvex-migrate__tables table { margin-bottom: 8px; }
+.clipnuvex-migrate__tables td, .clipnuvex-migrate__tables th { vertical-align: top; }
+.clipnuvex-migrate__after { margin-top: 16px; padding: 12px 14px; background: #fff8e5; border-left: 4px solid #dba617; }

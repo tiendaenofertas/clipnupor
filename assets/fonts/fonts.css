@@ -1,0 +1,23 @@
+/* ==========================================================================
+   Clipnuvex — Fuentes self-host (variables woff2). Al existir este archivo, el
+   theme deja de depender de Fontshare (api/cdn): elimina 2 conexiones externas
+   y el waterfall DNS→CSS→woff2, mejorando FCP/LCP. Los .woff2 se precargan
+   (clipnuvex_preload_fonts) y esta hoja se carga async (no bloquea el render).
+   Fuentes gratuitas para uso comercial y self-host (Indian Type Foundry / Fontshare).
+   ========================================================================== */
+
+@font-face {
+	font-family: 'Satoshi';
+	src: url('Satoshi-Variable.woff2') format('woff2');
+	font-weight: 300 900;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Clash Display';
+	src: url('ClashDisplay-Variable.woff2') format('woff2');
+	font-weight: 200 700;
+	font-display: swap;
+	font-style: normal;
+}
