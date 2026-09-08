@@ -1,0 +1,20 @@
+/*
+Theme Name: Clipnuvex
+Theme URI: https://clipnuvex.com/
+Author: Clipnuvex
+Author URI: https://clipnuvex.com/
+Description: Plataforma de vídeo premium agnóstica de nicho. Theme de producción optimizado para SEO, rápido, responsive, accesible (AA) y monetizable con ad slots IAB. Incluye CPT "video", taxonomías, Modo Demo de importación con 1 clic, panel de administración e i18n ES/EN.
+Version: 1.6.0
+Requires at least: 6.2
+Tested up to: 6.8
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: clipnuvex
+Tags: video, custom-post-type, seo, responsive, accessibility-ready, translation-ready, custom-colors, full-width-template, sticky-post, threaded-comments
+*/
+
+/*
+ * Los estilos reales del theme viven en assets/css/ (tokens, base, layout, components, views)
+ * y se encolan desde inc/enqueue.php. Este archivo solo declara la cabecera del theme.
+ */
