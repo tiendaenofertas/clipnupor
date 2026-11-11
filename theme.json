@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 2,
+	"settings": {
+		"appearanceTools": true,
+		"layout": {
+			"contentSize": "1600px",
+			"wideSize": "1600px"
+		},
+		"color": {
+			"custom": true,
+			"customGradient": true,
+			"palette": [
+				{ "slug": "base", "color": "#0a0910", "name": "Fondo base" },
+				{ "slug": "surface", "color": "#15131e", "name": "Superficie" },
+				{ "slug": "accent", "color": "#7C5CFF", "name": "Acento" },
+				{ "slug": "accent-dark", "color": "#5B3CE0", "name": "Acento oscuro" },
+				{ "slug": "text", "color": "#f1f3f8", "name": "Texto" },
+				{ "slug": "text-2", "color": "#aab2c6", "name": "Texto secundario" }
+			]
+		},
+		"typography": {
+			"customFontSize": true,
+			"fontFamilies": [
+				{ "fontFamily": "'Clash Display', system-ui, sans-serif", "slug": "display", "name": "Clash Display" },
+				{ "fontFamily": "'Satoshi', system-ui, sans-serif", "slug": "body", "name": "Satoshi" }
+			]
+		},
+		"spacing": {
+			"units": [ "px", "em", "rem", "vw", "%" ]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "#0a0910",
+			"text": "#f1f3f8"
+		},
+		"typography": {
+			"fontFamily": "'Satoshi', system-ui, sans-serif"
+		}
+	}
+}
