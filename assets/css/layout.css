@@ -1,0 +1,385 @@
+/* ==========================================================================
+   Clipnuvex — Layout: header, nav, buscador, drawer, bottom-nav, footer
+   ========================================================================== */
+
+/* ---------- Header sticky ---------- */
+.cnx-header {
+	position: sticky;
+	top: 0;
+	z-index: var(--cnx-z-header);
+	backdrop-filter: blur(20px) saturate(180%);
+	-webkit-backdrop-filter: blur(20px) saturate(180%);
+	background: var(--cnx-header-bg);
+	border-bottom: 1px solid var(--cnx-border);
+	transition: background .25s ease, box-shadow .25s ease;
+}
+.cnx-header.is-scrolled {
+	background: var(--cnx-header-bg-scrolled);
+	box-shadow: 0 10px 34px rgba(0, 0, 0, .5);
+}
+.cnx-header__inner {
+	max-width: var(--cnx-container);
+	margin: 0 auto;
+	padding: 0 var(--cnx-pad-x);
+	height: var(--cnx-header-h);
+	display: flex;
+	align-items: center;
+	gap: clamp(12px, 3vw, 28px);
+}
+
+/* ---------- Logo ---------- */
+.cnx-logo { display: flex; align-items: center; gap: 10px; flex: none; }
+.cnx-logo__mark {
+	width: 34px; height: 34px;
+	border-radius: 10px;
+	background: var(--cnx-accent-grad);
+	display: flex; align-items: center; justify-content: center;
+	box-shadow: 0 6px 18px -4px rgba(var(--cnx-accent-rgb), .8);
+}
+.cnx-logo__play {
+	width: 0; height: 0;
+	border-top: 7px solid transparent;
+	border-bottom: 7px solid transparent;
+	border-left: 11px solid var(--cnx-on-accent);
+	margin-left: 2px;
+}
+.cnx-logo__word { font: 700 22px/1 var(--cnx-font-display); letter-spacing: -.01em; color: var(--cnx-heading); }
+.cnx-logo__accent { color: var(--cnx-accent); }
+
+/* ---------- Nav primaria ---------- */
+.cnx-nav { display: flex; align-items: center; gap: 3px; flex: none; }
+.cnx-nav__link {
+	padding: 9px 14px;
+	border-radius: 11px;
+	font: 600 14px var(--cnx-font-body);
+	color: var(--cnx-text-2);
+	border: 1px solid transparent;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: all .18s;
+}
+.cnx-nav__link:hover { color: var(--cnx-text-strong); }
+.cnx-nav__link.is-active,
+.cnx-nav .current-menu-item > .cnx-nav__link,
+.cnx-nav__link[aria-current] {
+	color: var(--cnx-text-strong);
+	background: linear-gradient(135deg, rgba(var(--cnx-accent-rgb), .24), rgba(var(--cnx-accent-rgb), .06));
+	border: 1px solid rgba(var(--cnx-accent-rgb), .4);
+	box-shadow: 0 4px 14px rgba(var(--cnx-accent-rgb), .18);
+}
+
+/* ---------- Buscador ---------- */
+.cnx-search { flex: 1; max-width: 540px; margin: 0 auto; position: relative; }
+.cnx-search__box {
+	display: flex; align-items: center; gap: 10px;
+	height: 46px; padding: 0 14px;
+	border-radius: var(--cnx-radius-input);
+	background: var(--cnx-translucent);
+	border: 1px solid rgba(var(--cnx-fg-rgb), .09);
+	transition: all .2s ease;
+}
+.cnx-search__box:focus-within {
+	background: var(--cnx-search-bg);
+	border: 1px solid rgba(var(--cnx-accent-rgb), .6);
+	box-shadow: 0 0 0 4px rgba(var(--cnx-accent-rgb), .16), 0 16px 44px rgba(0, 0, 0, .5);
+}
+.cnx-search__icon { flex: none; color: var(--cnx-text-3b); display: flex; }
+.cnx-search__input {
+	flex: 1; min-width: 0;
+	background: transparent; border: none; outline: none;
+	color: var(--cnx-text);
+	font: 500 14px var(--cnx-font-body);
+}
+.cnx-search__kbd {
+	flex: none;
+	font: 700 11px var(--cnx-font-body);
+	color: var(--cnx-text-4);
+	border: 1px solid var(--cnx-border-3);
+	border-radius: 6px;
+	padding: 3px 7px;
+}
+
+/* Dropdown del buscador */
+.cnx-search__panel {
+	position: absolute;
+	top: 54px; left: 0; right: 0;
+	z-index: var(--cnx-z-search);
+	background: var(--cnx-search-panel-bg);
+	backdrop-filter: blur(24px);
+	-webkit-backdrop-filter: blur(24px);
+	border: 1px solid var(--cnx-border-2);
+	border-radius: 16px;
+	box-shadow: 0 26px 64px rgba(0, 0, 0, .6);
+	overflow: hidden;
+	animation: cnxFade .16s ease;
+	max-height: 70vh; overflow-y: auto;
+}
+.cnx-search__panel[hidden] { display: none; }
+.cnx-search__group-label {
+	font: 800 10px var(--cnx-font-body);
+	letter-spacing: .12em; text-transform: uppercase;
+	color: var(--cnx-text-3b);
+	padding: 14px 16px 8px;
+}
+.cnx-search__result {
+	display: flex; align-items: center; gap: 12px;
+	padding: 9px 16px;
+	cursor: pointer;
+	transition: background .15s ease;
+}
+.cnx-search__result:hover { background: rgba(var(--cnx-fg-rgb), .045); }
+.cnx-search__result-thumb {
+	flex: none; width: 34px; height: 50px;
+	border-radius: 6px; object-fit: cover;
+	background: var(--cnx-surface);
+}
+.cnx-search__result-cat-icon {
+	flex: none; width: 38px; height: 38px;
+	border-radius: 10px;
+	background: var(--cnx-accent-grad);
+	display: flex; align-items: center; justify-content: center;
+	color: var(--cnx-on-accent);
+}
+.cnx-search__result-title { font: 600 13.5px var(--cnx-font-body); color: var(--cnx-text); }
+.cnx-search__result-meta { font: 500 11.5px var(--cnx-font-body); color: var(--cnx-text-3); margin-top: 2px; }
+.cnx-search__result-badge {
+	margin-left: auto; flex: none;
+	font: 800 9px var(--cnx-font-body);
+	letter-spacing: .05em; text-transform: uppercase;
+	color: var(--cnx-accent-light);
+	border: 1px solid rgba(var(--cnx-accent-rgb), .3);
+	border-radius: 6px; padding: 4px 7px;
+}
+.cnx-search__footer {
+	display: block;
+	padding: 13px 16px;
+	text-align: center;
+	font: 700 13px var(--cnx-font-body);
+	color: var(--cnx-accent);
+	border-top: 1px solid var(--cnx-border);
+	cursor: pointer;
+}
+.cnx-search__empty { padding: 28px 16px; text-align: center; color: var(--cnx-text-3b); font: 500 14px var(--cnx-font-body); }
+
+/* ---------- Switcher de idioma ---------- */
+.cnx-lang {
+	flex: none;
+	display: flex; align-items: center; justify-content: center;
+	min-width: 42px; height: 40px; padding: 0 11px;
+	border-radius: 11px;
+	border: 1px solid var(--cnx-border-3);
+	background: rgba(var(--cnx-fg-rgb), .05);
+	color: var(--cnx-text-soft);
+	font: 800 12px var(--cnx-font-body);
+	letter-spacing: .04em;
+	cursor: pointer;
+	transition: all .18s;
+}
+.cnx-lang:hover { border-color: var(--cnx-accent); color: var(--cnx-text-strong); }
+
+/* ---------- Botón menú móvil ---------- */
+.cnx-burger {
+	width: 42px; height: 42px;
+	border-radius: 12px;
+	border: 1px solid var(--cnx-border-2);
+	background: rgba(var(--cnx-fg-rgb), .06);
+	display: none;
+	flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+	cursor: pointer;
+}
+.cnx-burger span { width: 17px; height: 2px; background: var(--cnx-text); border-radius: 2px; }
+
+/* ---------- Drawer móvil ---------- */
+.cnx-drawer { position: fixed; inset: 0; z-index: var(--cnx-z-drawer); background: rgba(0, 0, 0, .86); backdrop-filter: blur(6px); }
+.cnx-drawer[hidden] { display: none; }
+.cnx-drawer__panel {
+	position: absolute; top: 0; left: 0;
+	width: 88%; max-width: 340px; height: 100%;
+	background: var(--cnx-drawer-grad);
+	border-right: 1px solid var(--cnx-border);
+	padding: 24px 22px;
+	display: flex; flex-direction: column; gap: 6px;
+	animation: cnxFade .25s ease;
+	overflow-y: auto;
+}
+.cnx-drawer__label {
+	font: 800 10px var(--cnx-font-body);
+	letter-spacing: .12em; text-transform: uppercase;
+	color: var(--cnx-text-3b);
+	margin: 8px 0;
+}
+.cnx-drawer__link {
+	padding: 12px 14px;
+	border-radius: 11px;
+	font: 600 15px var(--cnx-font-body);
+	color: var(--cnx-text-2);
+	cursor: pointer;
+}
+.cnx-drawer__link:hover, .cnx-drawer__link.is-active { color: var(--cnx-text-strong); background: rgba(var(--cnx-accent-rgb), .14); }
+.cnx-drawer__divider { height: 1px; background: var(--cnx-border); margin: 14px 0; }
+.cnx-drawer__close {
+	align-self: flex-end;
+	width: 38px; height: 38px;
+	border-radius: 10px;
+	border: 1px solid var(--cnx-border-2);
+	background: rgba(var(--cnx-fg-rgb), .06);
+	color: var(--cnx-text-strong); font-size: 20px; line-height: 1;
+	cursor: pointer;
+	margin-bottom: 8px;
+}
+
+/* ---------- Bottom nav móvil ---------- */
+.cnx-bottomnav {
+	position: fixed; left: 0; right: 0; bottom: 0;
+	z-index: var(--cnx-z-bottomnav);
+	background: var(--cnx-bottomnav-bg);
+	backdrop-filter: blur(16px);
+	border-top: 1px solid var(--cnx-border);
+	display: none;
+	justify-content: space-around;
+	padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
+}
+.cnx-bottomnav__item {
+	display: flex; flex-direction: column; align-items: center; gap: 3px;
+	flex: 1; padding: 5px 4px;
+	cursor: pointer;
+	font: 700 10.5px var(--cnx-font-body);
+	color: var(--cnx-text-3b);
+	background: none; border: none;
+}
+.cnx-bottomnav__item.is-active { color: var(--cnx-text-strong); }
+
+/* ---------- Footer ---------- */
+.cnx-footer {
+	border-top: 1px solid var(--cnx-border);
+	background: var(--cnx-footer-bg);
+	margin-top: 60px;
+}
+.cnx-footer__inner {
+	max-width: var(--cnx-container);
+	margin: 0 auto;
+	padding: clamp(34px, 4vw, 56px) var(--cnx-pad-x);
+	display: grid;
+	grid-template-columns: 1.4fr repeat(3, 1fr);
+	gap: clamp(24px, 4vw, 48px);
+}
+.cnx-footer__brand-desc { margin: 14px 0 0; color: var(--cnx-text-3); font: 400 14px/1.7 var(--cnx-font-body); max-width: 320px; }
+.cnx-footer__col-title { font: 700 13px var(--cnx-font-body); text-transform: uppercase; letter-spacing: .08em; color: var(--cnx-text-3); margin: 0 0 14px; }
+.cnx-footer__col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+/* Área táctil ampliada (tap targets ≥ 44px de alto para móvil/SEO). */
+.cnx-footer__col a { color: var(--cnx-text-2); font: 500 14px/1 var(--cnx-font-body); display: inline-flex; align-items: center; min-height: 32px; padding: 6px 0; }
+.cnx-footer__col a:hover { color: var(--cnx-accent); }
+.cnx-footer__bottom {
+	border-top: 1px solid var(--cnx-border);
+	padding: 18px var(--cnx-pad-x);
+	max-width: var(--cnx-container); margin: 0 auto;
+	display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+	color: var(--cnx-text-3b); font: 500 13px var(--cnx-font-body); /* 5.44:1 (≥4.5:1 AA) */
+}
+
+/* ---------- Breadcrumbs ---------- */
+.cnx-breadcrumbs { border-bottom: 1px solid rgba(var(--cnx-fg-rgb), .06); background: rgba(var(--cnx-slate-rgb), .22); }
+.cnx-breadcrumbs__inner { display: flex; align-items: center; gap: 6px; padding-top: 8px; padding-bottom: 8px; font: 500 13px var(--cnx-font-body); flex-wrap: wrap; }
+.cnx-breadcrumbs__link { color: var(--cnx-text-3); display: inline-flex; align-items: center; min-height: 28px; padding: 4px 4px; }
+.cnx-breadcrumbs__link:hover { color: var(--cnx-accent); }
+.cnx-breadcrumbs__sep { color: var(--cnx-text-5); }
+.cnx-breadcrumbs__current { color: var(--cnx-heading); font-weight: 700; }
+.cnx-breadcrumbs__back {
+	display: inline-flex; align-items: center; gap: 5px;
+	color: var(--cnx-text-soft);
+	font: 700 13px var(--cnx-font-body);
+	padding: 5px 11px;
+	border: 1px solid var(--cnx-border-3);
+	border-radius: 8px; margin-right: 2px;
+	cursor: pointer;
+	/* Reset del estilo nativo del <button> (evita el fondo gris claro del navegador). */
+	background: transparent;
+	-webkit-appearance: none;
+	appearance: none;
+}
+.cnx-breadcrumbs__back:hover { border-color: var(--cnx-accent); color: var(--cnx-text-strong); }
+
+/* ---------- Paginación ---------- */
+.cnx-pagination { margin-top: 32px; display: flex; justify-content: center; }
+.cnx-pagination__list { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.cnx-pagination a.page-numbers,
+.cnx-pagination span.page-numbers {
+	min-width: 44px; height: 44px;
+	padding: 0 12px;
+	display: flex; align-items: center; justify-content: center;
+	border-radius: 11px;
+	font: 700 14px var(--cnx-font-body);
+	background: var(--cnx-translucent-strong);
+	border: 1px solid var(--cnx-border);
+	color: var(--cnx-text-2);
+}
+.cnx-pagination a.page-numbers:hover { border-color: var(--cnx-accent); color: var(--cnx-text-strong); }
+.cnx-pagination span.page-numbers.current {
+	background: var(--cnx-accent-grad);
+	color: var(--cnx-on-accent); border-color: transparent;
+	box-shadow: 0 6px 18px rgba(var(--cnx-accent-rgb), .4);
+}
+.cnx-pagination span.page-numbers.dots { background: transparent; border-color: transparent; color: var(--cnx-text-3); } /* 6.44:1 (AA) */
+
+/* ---------- Back to top ---------- */
+.cnx-totop {
+	position: fixed; right: 22px; bottom: 22px;
+	z-index: 900;
+	width: 46px; height: 46px;
+	border-radius: 999px;
+	background: var(--cnx-accent-grad);
+	border: none; color: var(--cnx-on-accent);
+	display: flex; align-items: center; justify-content: center;
+	box-shadow: 0 10px 26px rgba(var(--cnx-accent-rgb), .45);
+	cursor: pointer;
+	opacity: 0; transform: translateY(12px); pointer-events: none;
+	transition: opacity .25s ease, transform .25s ease;
+}
+.cnx-totop.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+
+/* Main */
+.cnx-main { display: block; }
+
+/* ---------- Responsive: umbral móvil < 900px ---------- */
+@media (max-width: 899px) {
+	.cnx-nav { display: none; }
+	.cnx-burger { display: flex; flex: none; }
+	.cnx-bottomnav { display: flex; }
+	.cnx-lang { min-width: 38px; height: 38px; padding: 0 9px; flex: none; }
+	.cnx-search__kbd { display: none; }
+	.cnx-search { min-width: 0; } /* permite encoger sin desbordar la cabecera */
+	body { padding-bottom: 72px; } /* hueco para bottom-nav */
+	/* Footer en tablet: marca a todo el ancho + 3 columnas de enlaces. */
+	.cnx-footer { margin-top: 48px; }
+	.cnx-footer__inner { grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 32px); }
+	.cnx-footer__brand { grid-column: 1 / -1; }
+}
+
+/* Móvil: el logo de la CABECERA deja solo el isotipo para no robar espacio al
+   buscador (el footer conserva el wordmark completo). El menú superior nunca
+   choca con el buscador y este sigue usable incluso a 320 px. */
+@media (max-width: 600px) {
+	.cnx-header__inner { gap: 10px; }
+	.cnx-header .cnx-logo__word { display: none; }
+	.cnx-search { margin: 0; }
+	.cnx-lang { min-width: 36px; padding: 0 8px; }
+
+	/* Footer móvil compacto: una columna y enlaces en flujo horizontal (chips)
+	   en lugar de listas verticales largas → mucho más corto y ordenado. */
+	.cnx-footer { margin-top: 36px; }
+	.cnx-footer__inner { grid-template-columns: 1fr; gap: 22px; padding: 30px var(--cnx-pad-x); }
+	.cnx-footer__brand { text-align: center; display: flex; flex-direction: column; align-items: center; }
+	.cnx-footer__brand-desc { max-width: 420px; }
+	.cnx-footer__col-title { margin-bottom: 8px; }
+	.cnx-footer__col ul { flex-direction: row; flex-wrap: wrap; gap: 0 18px; }
+	.cnx-footer__col a { min-height: 36px; }
+
+	/* Barra inferior apilada y centrada (antes se separaba con space-between). */
+	.cnx-footer__bottom { flex-direction: column; align-items: center; text-align: center; gap: 6px; padding-top: 16px; padding-bottom: 16px; }
+}
+
+/* Pantallas muy estrechas (≤360 px): apura el espacio del buscador. */
+@media (max-width: 360px) {
+	.cnx-header__inner { gap: 8px; padding-left: 12px; padding-right: 12px; }
+	.cnx-logo__mark { width: 32px; height: 32px; }
+}
